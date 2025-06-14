@@ -1,0 +1,147 @@
+/* css/style-dashboard.css */
+
+/* Header action items alignment */
+.header-content { /* Existing class from style-login.css, ensure it can handle more items */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn-logout {
+    background-color: #dc3545; /* Red for logout */
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 15px; /* Space from language selector */
+}
+.btn-logout:hover {
+    background-color: #c82333;
+}
+
+.dashboard-main-content {
+    padding: 20px;
+    max-width: 1200px; /* Wider content area for dashboard */
+    margin: 0 auto; /* Center the content */
+}
+
+.welcome-message {
+    text-align: center;
+    padding: 15px;
+    background-color: #e9f5ff; /* Light blue background */
+    border: 1px solid #b3d7ff;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.welcome-message h2 {
+    margin-top: 0;
+    color: #003366;
+    margin-bottom: 5px;
+}
+.welcome-message p {
+    margin-bottom: 0;
+    color: #335b8b;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between cards */
+}
+
+.dashboard-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+}
+
+.dashboard-card h3 {
+    margin-top: 0;
+    color: #003366; /* Dark blue heading for cards */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.dashboard-card p {
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #333;
+}
+.dashboard-card p strong {
+    color: #555;
+}
+
+.dashboard-card .status-open {
+    color: #28a745; /* Green for open status */
+    font-weight: bold;
+}
+.dashboard-card .status-closed {
+    color: #dc3545; /* Red for closed status */
+    font-weight: bold;
+}
+
+.btn-vote-now {
+    display: inline-block;
+    background-color: #007bff; /* Blue for primary action */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.95em;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+.btn-vote-now:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.card-link {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: #0056b3;
+    text-decoration: none;
+    margin-top: 15px;
+}
+.card-link:hover {
+    text-decoration: underline;
+}
+
+#notifications-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+#notifications-section li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.9em;
+}
+#notifications-section li:last-child {
+    border-bottom: none;
+}
+#notifications-section a {
+    color: #0056b3;
+    text-decoration: none;
+}
+#notifications-section a:hover {
+    text-decoration: underline;
+}
+
+/* Active nav link styling */
+.login-nav a.active {
+    color: #FF9933; /* Saffron color for active link */
+    font-weight: bold;
+    border-bottom: 2px solid #FF9933;
+}
