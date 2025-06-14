@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cast Your Vote - Online Voting Portal</title>
+    <link rel="stylesheet" href="css/style-login.css"> <link rel="stylesheet" href="css/style-dashboard.css"> <link rel="stylesheet" href="css/style-vote.css"> </head>
+<body>
+    <div class="page-container">
+        <header class="login-header">
+            <div class="header-content">
+                <h1>Online Voting Portal</h1>
+                <div class="header-actions">
+                    <div class="language-selector" style="margin-right: 20px;">
+                        <label for="lang">Language:</label>
+                        <select id="lang" name="lang">
+                            <option value="en">English</option>
+                            <option value="hi">हिन्दी</option>
+                        </select>
+                    </div>
+                    <button id="logoutButton" class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="login-nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">My Profile</a>
+            <a href="election-history.html">Election History</a>
+            <a href="help.html">Help</a>
+            </nav>
+
+        <main class="dashboard-main-content">
+            <div class="welcome-message" style="text-align:left; padding: 15px 20px;">
+                <h2>Cast Your Vote: Rashtriya Aam Chunav 2029</h2>
+                <p>Please review the candidates below and make your selection. Your vote is secret and secure.</p>
+            </div>
+
+            <div id="voting-panel">
+                <div class="candidates-container">
+                    <div class="candidate-card" data-candidate-id="1">
+                        <img src="https://via.placeholder.com/100x120/A9A9A9/FFFFFF?Text=Candidate+1" alt="Candidate 1 Photo" class="candidate-photo">
+                        <div class="candidate-details">
+                            <h4 class="candidate-name">Smt. Priya Sharma</h4>
+                            <p class="party-name">Pragati Dal (PD)</p>
+                            <p class="party-symbol">Symbol: 📖 (Kitaab)</p>
+                        </div>
+                        <div class="selection-area">
+                            <input type="radio" name="candidate_selection" id="candidate1" value="Priya Sharma (PD)">
+                            <label for="candidate1" class="select-label">Select</label>
+                        </div>
+                    </div>
+
+                    <div class="candidate-card" data-candidate-id="2">
+                        <img src="https://via.placeholder.com/100x120/A9A9A9/FFFFFF?Text=Candidate+2" alt="Candidate 2 Photo" class="candidate-photo">
+                        <div class="candidate-details">
+                            <h4 class="candidate-name">Shri Rohan Verma</h4>
+                            <p class="party-name">Vikas Manch (VM)</p>
+                            <p class="party-symbol">Symbol: ☀️ (Suraj)</p>
+                        </div>
+                        <div class="selection-area">
+                            <input type="radio" name="candidate_selection" id="candidate2" value="Rohan Verma (VM)">
+                            <label for="candidate2" class="select-label">Select</label>
+                        </div>
+                    </div>
+
+                    <div class="candidate-card" data-candidate-id="3">
+                        <img src="https://via.placeholder.com/100x120/A9A9A9/FFFFFF?Text=Candidate+3" alt="Candidate 3 Photo" class="candidate-photo">
+                        <div class="candidate-details">
+                            <h4 class="candidate-name">Shri Arjun Singh</h4>
+                            <p class="party-name">Independent</p>
+                            <p class="party-symbol">Symbol: 🌳 (Ped)</p>
+                        </div>
+                        <div class="selection-area">
+                            <input type="radio" name="candidate_selection" id="candidate3" value="Arjun Singh (Independent)">
+                            <label for="candidate3" class="select-label">Select</label>
+                        </div>
+                    </div>
+                    
+                    <div class="candidate-card nota-card" data-candidate-id="NOTA">
+                         <img src="https://via.placeholder.com/100x120/D3D3D3/000000?Text=NOTA" alt="NOTA Option" class="candidate-photo">
+                        <div class="candidate-details">
+                            <h4 class="candidate-name">None of the Above (NOTA)</h4>
+                            <p class="party-name">No Party Affiliation</p>
+                            <p class="party-symbol">Symbol: 🚫</p>
+                        </div>
+                        <div class="selection-area">
+                            <input type="radio" name="candidate_selection" id="candidateNOTA" value="NOTA">
+                            <label for="candidateNOTA" class="select-label">Select</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vote-confirmation-area">
+                    <p id="selection-feedback">Please select a candidate or NOTA to cast your vote.</p>
+                    <button id="castVoteButton" class="btn-cast-vote" disabled>Confirm & Cast Vote</button>
+                </div>
+            </div>
+            <div id="thankYouMessage" class="dashboard-card" style="display:none; text-align:center; padding: 30px;">
+                <h3>Thank You For Voting!</h3>
+                <p>Your vote has been recorded successfully.</p>
+                <p>You will now be redirected to the dashboard.</p>
+            </div>
+        </main>
+
+        <footer class="login-footer">
+            <p>&copy; <span id="currentYear"></span> Online Voting Portal. Election Commission of India. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- Common JS Functions (Copy from dashboard.html) ---
+        function applyStoredLanguage() {
+            const storedLang = sessionStorage.getItem('selectedLanguage');
+            const langDropdown = document.getElementById('lang');
+            if (storedLang && langDropdown) { langDropdown.value = storedLang; } 
+            else if (langDropdown) { const dL = langDropdown.value; sessionStorage.setItem('selectedLanguage', dL); }
+        }
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) { 
+            logoutButton.addEventListener('click', function() { 
+                sessionStorage.clear(); 
+                alert('You have been logged out.'); 
+                window.location.href = 'login.html'; 
+            }); 
+        }
+        const currentYearEl = document.getElementById('currentYear');
+        if (currentYearEl) { currentYearEl.textContent = new Date().getFullYear(); }
+        
+        document.addEventListener('DOMContentLoaded', function() { 
+            applyStoredLanguage(); 
+        });
+        
+        const langSelect = document.getElementById('lang');
+        if(langSelect) { 
+            langSelect.addEventListener('change', function() { 
+                sessionStorage.setItem('selectedLanguage', this.value); 
+                // alert('Language preference updated. Content translation to be implemented.');
+            }); 
+        }
+        // --- End of Common JS Functions ---
+
+
+        // --- Vote Page Specific JS ---
+        const candidateRadios = document.querySelectorAll('input[name="candidate_selection"]');
+        const castVoteButton = document.getElementById('castVoteButton');
+        const selectionFeedback = document.getElementById('selection-feedback');
+        const candidateCards = document.querySelectorAll('.candidate-card');
+        const votingPanel = document.getElementById('voting-panel');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+
+        candidateRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                castVoteButton.disabled = false;
+                const selectedCandidateName = this.value;
+                selectionFeedback.textContent = 'You have selected: ' + selectedCandidateName + '. Click below to confirm.';
+                
+                // Remove 'selected' class from all cards
+                candidateCards.forEach(card => card.classList.remove('selected'));
+                // Add 'selected' class to the parent card of the checked radio
+                if(this.checked) {
+                    this.closest('.candidate-card').classList.add('selected');
+                }
+            });
+        });
+
+        if (castVoteButton) {
+            castVoteButton.addEventListener('click', function() {
+                const selectedRadio = document.querySelector('input[name="candidate_selection"]:checked');
+                if (!selectedRadio) {
+                    alert('Please select a candidate or NOTA before casting your vote.');
+                    return;
+                }
+
+                const candidateName = selectedRadio.value;
+                const confirmation = confirm('Are you sure you want to cast your vote for: ' + candidateName + '? This action cannot be undone.');
+
+                if (confirmation) {
+                    // Simulate vote casting
+                    console.log('Vote cast for:', candidateName);
+                    
+                    // Hide voting panel and show thank you message
+                    if(votingPanel) votingPanel.style.display = 'none';
+                    if(thankYouMessage) thankYouMessage.style.display = 'block';
+
+                    // Disable further interaction (optional, as panel is hidden)
+                    candidateRadios.forEach(radio => radio.disabled = true);
+                    castVoteButton.disabled = true;
+                    castVoteButton.textContent = 'Vote Cast';
+
+                    // Simulate redirect after a few seconds
+                    setTimeout(function() {
+                        window.location.href = 'dashboard.html';
+                    }, 4000); // Redirect after 4 seconds
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & FAQ - Online Voting Portal</title>
+    <link rel="stylesheet" href="css/style-login.css">
+    <link rel="stylesheet" href="css/style-dashboard.css">
+    <style>
+        /* Quick specific styles for help/FAQ page */
+        .faq-section { margin-bottom: 30px; }
+        .faq-section h4 { color: #003366; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .faq-item details { margin-bottom: 10px; border: 1px solid #e0e0e0; border-radius: 4px; background: #f9f9f9;}
+        .faq-item summary { padding: 15px; font-weight: bold; cursor: pointer; color: #0056b3; list-style-position: inside; }
+        .faq-item summary:hover { background-color: #eef; }
+        .faq-item div { padding: 0px 15px 15px 35px; /* Indent answer */ font-size: 0.95em; line-height: 1.6; }
+        .contact-info p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+         <header class="login-header">
+             <div class="header-content"> /* ... Same as profile.html ... */ </div>
+        </header>
+
+        <nav class="login-nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">My Profile</a>
+            <a href="election-history.html">Election History</a>
+            <a href="help.html" class="active">Help</a>
+        </nav>
+
+        <main class="dashboard-main-content">
+            <div class="welcome-message" style="text-align:left; padding: 15px 20px;">
+                <h2>Help Center & Frequently Asked Questions (FAQ)</h2>
+            </div>
+
+            <div class="dashboard-card"> <section class="faq-section">
+                    <h4>Registration & Login</h4>
+                    <div class="faq-item">
+                        <details>
+                            <summary>How do I register on the portal?</summary>
+                            <div>To register, click on "Create an account" on the login page. You will need to provide your full name, mobile number, and verify using either your Aadhar or Voter ID details.</div>
+                        </details>
+                    </div>
+                    <div class="faq-item">
+                        <details>
+                            <summary>I forgot my password. How can I reset it?</summary>
+                            <div>On the login page, click the "Forgot Password?" link and follow the instructions. You will typically need to verify your identity via mobile OTP or email.</div>
+                        </details>
+                    </div>
+                </section>
+
+                <section class="faq-section">
+                    <h4>Voting Process</h4>
+                    <div class="faq-item">
+                        <details>
+                            <summary>How do I cast my vote online?</summary>
+                            <div>Once an election is active for you, log in to your dashboard. You will see an option to "View Candidates & Cast Vote". Follow the on-screen instructions carefully.</div>
+                        </details>
+                    </div>
+                     <div class="faq-item">
+                        <details>
+                            <summary>Is online voting secure?</summary>
+                            <div>We use multiple layers of security, including OTP verification and data encryption, to ensure the integrity and confidentiality of your vote.</div>
+                        </details>
+                    </div>
+                </section>
+
+                <section class="faq-section contact-info">
+                    <h4>Contact Us</h4>
+                    <p>If you need further assistance, please contact our support team:</p>
+                    <p><strong>Helpline Number:</strong> 1800-XXX-XXXX (Toll-Free)</p>
+                    <p><strong>Email Support:</strong> support@onlinevotingportal.gov.in</p>
+                    <p><strong>Operating Hours:</strong> Mon-Sat, 9:00 AM to 6:00 PM</p>
+                </section>
+            </div>
+        </main>
+
+        <footer class="login-footer">
+             <p>&copy; <span id="currentYear"></span> Online Voting Portal. /* ... Same as profile.html ... */ </p>
+        </footer>
+    </div>
+
+    <script>
+        // Common JS: Apply Stored Language, Logout, Footer Year (Copy from dashboard.html's script)
+        // --- Paste the full common JS functions here from dashboard.html ---
+        // For brevity, I've put placeholders. You should copy the full functions.
+        // Example for applyStoredLanguage (rest are similar):
+        function applyStoredLanguage() { /* ... */ }
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) { logoutButton.addEventListener('click', function() { /* ... */ window.location.href = 'login.html'; }); }
+        const currentYearEl = document.getElementById('currentYear');
+        if (currentYearEl) { currentYearEl.textContent = new Date().getFullYear(); }
+        document.addEventListener('DOMContentLoaded', function() { applyStoredLanguage(); });
+        const langSelect = document.getElementById('lang');
+        if(langSelect) { langSelect.addEventListener('change', function() { /* ... */ sessionStorage.setItem('selectedLanguage', this.value); }); }
+    </script>
+</body>
+</html>

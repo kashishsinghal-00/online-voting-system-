@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New User Registration - Online Voting Portal</title>
+    <link rel="stylesheet" href="css/style-login.css">
+    <link rel="stylesheet" href="css/newuser.css">
+    </head>
+<body>
+    <div class="page-container">
+        <header class="login-header"> <div class="header-content">
+                <h1>Online Voting Portal</h1>
+                <div class="language-selector">
+                    <label for="lang">Language:</label>
+                    <select id="lang" name="lang">
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी</option>
+                        </select>
+                </div>
+            </div>
+        </header>
+
+        <nav class="login-nav"> <a href="language-select.html">Home</a> <a href="#about">About</a>
+            <a href="#contact">Contact Us</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+
+        <main class="login-main-content"> <div class="login-form-container" id="signup-form-container"> <h2>Create New Account</h2>
+                <form id="signUpForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name (as per Aadhar/Voter ID)</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number</label>
+                        <input type="tel" id="mobileNumber" name="mobileNumber" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required>
+                        <small>We may send an OTP for verification.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address (Optional)</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+
+                    <p style="font-weight: bold; margin-bottom: 10px; color: #333;">Primary Identification (Provide at least one):</p>
+                    <div class="form-group">
+                        <label for="aadharNumber">Aadhar Card Number (12 digits)</label>
+                        <input type="text" id="aadharNumber" name="aadharNumber" pattern="\d{12}" placeholder="XXXX XXXX XXXX">
+                        <small>Ensure it is linked to your mobile for OTP verification.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="voterIdNumber">Voter ID Card Number (EPIC No.)</label>
+                        <input type="text" id="voterIdNumber" name="voterIdNumber" pattern="[A-Z0-9]{10}" placeholder="e.g., ABC1234567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signUpPassword">Create Password</label>
+                        <input type="password" id="signUpPassword" name="signUpPassword" minlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" minlength="6" required>
+                    </div>
+                    <div class="form-group terms-group">
+                        <input type="checkbox" id="terms" name="terms" required style="width: auto; margin-right: 8px;">
+                        <label for="terms" style="display: inline; font-weight: normal;">I agree to the <a href="#terms-conditions" target="_blank">Terms and Conditions</a>.</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-signin">Register</button> </div>
+                </form>
+                <div class="signup-prompt"> <p>Already have an account? <a href="login.html">Sign In here</a>.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="login-footer"> <p>&copy; <span id="currentYear"></span> Online Voting Portal. Election Commission of India. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Script to set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Basic form validation and submission placeholder
+        const signUpForm = document.getElementById('signUpForm');
+        if (signUpForm) {
+            signUpForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const fullName = document.getElementById('fullName').value;
+                const mobileNumber = document.getElementById('mobileNumber').value;
+                const aadharNumber = document.getElementById('aadharNumber').value;
+                const voterIdNumber = document.getElementById('voterIdNumber').value;
+                const password = document.getElementById('signUpPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const termsAgreed = document.getElementById('terms').checked;
+
+                if (!fullName || !mobileNumber) {
+                    alert('Please fill in Full Name and Mobile Number.');
+                    return;
+                }
+                if (!aadharNumber && !voterIdNumber) {
+                    alert('Please provide either Aadhar Number or Voter ID Number.');
+                    return;
+                }
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+                if (password.length < 6) {
+                    alert('Password must be at least 6 characters long.');
+                    return;
+                }
+                if (!termsAgreed) {
+                    alert('You must agree to the Terms and Conditions.');
+                    return;
+                }
+
+                console.log('Sign Up form submitted with:', { fullName, mobileNumber, aadharNumber, voterIdNumber, password });
+                alert('Registration form submitted (data in console). Backend integration needed.');
+                // Yahaan par actual registration logic (API call) aayega
+            });
+        }
+        // Placeholder for language change
+        const langSelect = document.getElementById('lang');
+        if(langSelect) {
+            langSelect.addEventListener('change', function() {
+                console.log('Language changed to:', this.value);
+                // alert('Language change functionality to be implemented for signup page.');
+            });
+        }
+    </script>
+</body>
+</html>

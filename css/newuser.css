@@ -1,0 +1,16 @@
+/* css/style-signup.css (Example - agar zaroorat ho) */
+#signup-form-container {
+    max-width: 550px; /* Login form se thoda चौड़ा */
+}
+
+.terms-group label { /* Terms and conditions label ko input ke saath align karne ke liye */
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+.terms-group input[type="checkbox"] {
+    vertical-align: middle;
+    width: auto; /* Checkbox ki default width */
+    margin-right: 5px;
+}

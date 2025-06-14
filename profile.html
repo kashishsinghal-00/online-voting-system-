@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Online Voting Portal</title>
+    <link rel="stylesheet" href="css/style-login.css">
+    <link rel="stylesheet" href="css/style-dashboard.css">
+    <style>
+        /* Quick specific styles for profile page, can be moved to a CSS file */
+        .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .profile-card { background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .profile-card h4 { margin-top: 0; color: #003366; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .profile-details p { margin: 10px 0; font-size: 0.95em; }
+        .profile-details strong { color: #555; min-width: 150px; display: inline-block; }
+        .profile-actions { margin-top: 20px; text-align: right; }
+        .btn-edit-profile { background-color: #007bff; color: white; padding: 10px 15px; border:none; border-radius:4px; text-decoration:none; }
+        .profile-picture-section { text-align: center;}
+        .profile-picture-section img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; border: 3px solid #eee; margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <header class="login-header">
+            <div class="header-content">
+                <h1>Online Voting Portal</h1>
+                <div class="header-actions">
+                    <div class="language-selector" style="margin-right: 20px;">
+                        <label for="lang">Language:</label>
+                        <select id="lang" name="lang">
+                            <option value="en">English</option>
+                            <option value="hi">हिन्दी</option>
+                        </select>
+                    </div>
+                    <button id="logoutButton" class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="login-nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html" class="active">My Profile</a>
+            <a href="election.html">Election History</a>
+            <a href="help.html">Help</a>
+        </nav>
+
+        <main class="dashboard-main-content">
+            <div class="welcome-message" style="text-align:left; padding: 15px 20px;">
+                <h2>My Profile</h2>
+            </div>
+
+            <div class="profile-grid">
+                <div class="profile-card profile-picture-section">
+                    <h4>Profile Picture</h4>
+                    <img src="https://via.placeholder.com/150" alt="User Profile Picture">
+                    <button class="btn-edit-profile" style="background-color: #6c757d;">Change Picture</button>
+                </div>
+
+                <div class="profile-card">
+                    <h4>Personal Information</h4>
+                    <div class="profile-details">
+                        <p><strong>Full Name:</strong> [User Name Placeholder]</p>
+                        <p><strong>Date of Birth:</strong> 01-Jan-1990</p>
+                        <p><strong>Gender:</strong> Male/Female/Other</p>
+                        <p><strong>Mobile Number:</strong> +91 XXXXXX1234 (Verified)</p>
+                        <p><strong>Email Address:</strong> user@example.com (Verified)</p>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <h4>Address Information</h4>
+                    <div class="profile-details">
+                        <p><strong>Address:</strong> [123, Voting Lane, Example City]</p>
+                        <p><strong>State:</strong> [State Name]</p>
+                        <p><strong>Pincode:</strong> [123456]</p>
+                        <p><strong>Constituency:</strong> [User Constituency Placeholder]</p>
+                    </div>
+                </div>
+                
+                <div class="profile-card">
+                    <h4>Identity Documents</h4>
+                    <div class="profile-details">
+                        <p><strong>Aadhar Number:</strong> XXXX XXXX XXXX 1234 (Linked)</p>
+                        <p><strong>Voter ID (EPIC No.):</strong> XXXXXX1234</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-actions" style="margin-top:30px; text-align:center;">
+                <button class="btn-edit-profile">Edit Profile Information</button>
+            </div>
+        </main>
+
+        <footer class="login-footer">
+            <p>&copy; <span id="currentYear"></span> Online Voting Portal. Election Commission of India. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Common JS: Apply Stored Language, Logout, Footer Year (Copy from dashboard.html's script)
+        function applyStoredLanguage() { /* ... */ }
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) { logoutButton.addEventListener('click', function() { /* ... */ window.location.href = 'login.html'; }); }
+        const currentYearEl = document.getElementById('currentYear');
+        if (currentYearEl) { currentYearEl.textContent = new Date().getFullYear(); }
+        document.addEventListener('DOMContentLoaded', function() { applyStoredLanguage(); });
+        const langSelect = document.getElementById('lang');
+        if(langSelect) { langSelect.addEventListener('change', function() { /* ... */ sessionStorage.setItem('selectedLanguage', this.value); }); }
+
+        // --- Paste the full common JS functions here from dashboard.html ---
+        // For brevity, I've put placeholders. You should copy the full functions.
+        // Example for applyStoredLanguage (rest are similar):
+        function applyStoredLanguage() {
+            const storedLang = sessionStorage.getItem('selectedLanguage');
+            const langDropdown = document.getElementById('lang');
+            if (storedLang && langDropdown) {
+                langDropdown.value = storedLang;
+            } else if (langDropdown) {
+                const defaultLang = langDropdown.value;
+                sessionStorage.setItem('selectedLanguage', defaultLang);
+            }
+        }
+    </script>
+</body>
+</html>

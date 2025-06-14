@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Online Voting Portal</title>
+    <link rel="stylesheet" href="css/dashboard.css"> <link rel="stylesheet" href="css/style-dashboard.css"> </head>
+<body>
+    <div class="page-container">
+        <header class="login-header"> <div class="header-content">
+                <h1>Online Voting Portal</h1>
+                <div class="header-actions">
+                    <div class="language-selector" style="margin-right: 20px;">
+                        <label for="lang">Language:</label>
+                        <select id="lang" name="lang">
+                            <option value="en">English</option>
+                            <option value="hi">हिन्दी</option>
+                            </select>
+                    </div>
+                    <button id="logoutButton" class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="login-nav"> <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="profile.html">My Profile</a> <a href="election.html">Election History</a> <a href="help.html">Help</a> </nav>
+
+        <main class="dashboard-main-content">
+            <div class="welcome-message">
+                <h2>Welcome, [User Name Placeholder]!</h2>
+                <p>Here's your voting dashboard.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <section class="dashboard-card" id="profile-section">
+                    <h3>Your Profile Summary</h3>
+                    <p><strong>Name:</strong> [User Name Placeholder]</p>
+                    <p><strong>Voter ID (EPIC No.):</strong> XXXX-XXXX-1234 (Masked)</p>
+                    <p><strong>Registered Mobile:</strong> +91 XXXXXX1234 (Masked)</p>
+                    <p><strong>Constituency:</strong> [User Constituency Placeholder]</p>
+                    <a href="profile.html" class="card-link">View Full Profile</a>
+                </section>
+
+                <section class="dashboard-card" id="election-section">
+                    <h3>Current Election Status</h3>
+                    <div id="activeElectionInfo">
+                        <h4>General Elections 2025</h4>
+                        <p><strong>Status:</strong> <span class="status-open">Voting Open</span></p>
+                        <p><strong>Voting Ends On:</strong> 15 June 2025, 5:00 PM</p>
+                        <a href="vote.html" class="btn-vote-now">View Candidates & Cast Vote</a>
+                        </div>
+
+                    <div id="noActiveElectionInfo" style="display:none;">
+                        <p>There are currently no active elections for you, or you have already cast your vote.</p>
+                        <p>Thank you for participating!</p>
+                    </div>
+                </section>
+
+                <section class="dashboard-card" id="notifications-section">
+                    <h3>Notifications & Updates</h3>
+                    <ul>
+                        <li>Important dates for upcoming local body elections announced. <a href="#">Read more...</a></li>
+                        <li>Ensure your Voter ID is linked with Aadhar. <a href="#">Check status...</a></li>
+                        <li>New accessibility features added to the portal.</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+
+        <footer class="login-footer"> <p>&copy; <span id="currentYear"></span> Online Voting Portal. Election Commission of India. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Function to set language based on sessionStorage (same as login/signup)
+        function applyStoredLanguage() {
+            const storedLang = sessionStorage.getItem('selectedLanguage');
+            const langDropdown = document.getElementById('lang');
+            if (storedLang && langDropdown) {
+                langDropdown.value = storedLang;
+                console.log('Dashboard language set to:', storedLang);
+            } else if (langDropdown) {
+                const defaultLang = langDropdown.value;
+                sessionStorage.setItem('selectedLanguage', defaultLang);
+            }
+        }
+
+        // Logout functionality
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function() {
+                // Clear any user-specific session data if stored
+                // For now, just clear language and redirect
+                sessionStorage.removeItem('selectedLanguage'); // Or clear all: sessionStorage.clear();
+                // sessionStorage.removeItem('userToken'); // Example if you had a token
+                alert('You have been logged out.');
+                window.location.href = 'login.html';
+            });
+        }
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            applyStoredLanguage();
+            // Placeholder logic to show one of the election scenarios
+            // In a real app, this would be based on actual data
+            // const hasActiveElection = true; // Change this to false to see the other message
+            // if (hasActiveElection) {
+            //     document.getElementById('activeElectionInfo').style.display = 'block';
+            //     document.getElementById('noActiveElectionInfo').style.display = 'none';
+            // } else {
+            //     document.getElementById('activeElectionInfo').style.display = 'none';
+            //     document.getElementById('noActiveElectionInfo').style.display = 'block';
+            // }
+        });
+
+        // Language dropdown change handling (same as login/signup)
+        const langSelect = document.getElementById('lang');
+        if(langSelect) {
+            langSelect.addEventListener('change', function() {
+                const newLang = this.value;
+                sessionStorage.setItem('selectedLanguage', newLang);
+                console.log('Dashboard language changed to:', newLang);
+                // Real app might reload or fetch new content
+                alert('Language changed. Page content update for selected language to be implemented.');
+            });
+        }
+    </script>
+</body>
+</html>

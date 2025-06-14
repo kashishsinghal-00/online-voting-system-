@@ -1,0 +1,105 @@
+/* style-lang.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #e9ecef; /* Light grey background, similar to Aadhaar page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.language-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+.lang-header {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.logo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Aap actual logo ke liye .logo img { ... } style kar sakte hain */
+/*
+.logo-placeholder img {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+*/
+
+.logo-text-main {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #003366; /* Dark blue */
+}
+
+.logo-text-sub {
+    font-size: 1.2em;
+    color: #555;
+}
+
+
+.lang-main-content h1 {
+    font-size: 1.6em;
+    color: #0056b3; /* Blue heading */
+    margin-bottom: 10px;
+}
+
+.lang-main-content .hindi-prompt {
+    font-size: 1.2em;
+    color: #495057;
+    margin-bottom: 30px;
+}
+
+.language-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Buttons ko wrap karne ke liye agar space kam ho */
+    justify-content: center;
+    gap: 15px; /* Buttons ke beech mein space */
+}
+
+.lang-button {
+    background-color: #6c757d; /* Grey buttons, similar to Aadhaar page */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 120px; /* Minimum width for buttons */
+}
+
+.lang-button:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.lang-button:active {
+    background-color: #495057;
+    transform: translateY(0);
+}
+
+.lang-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+    font-size: 0.9em;
+    color: #6c757d;
+}
