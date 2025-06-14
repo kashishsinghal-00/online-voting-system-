@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Language - Online Voting Portal</title>
+ <link rel="stylesheet" href="css/style-lang.css">
+<body>
+    <div class="language-container">
+        <header class="lang-header">
+            <div class="logo-placeholder">
+                <span class="logo-text-main">भारत निर्वाचन आयोग</span>
+                <span class="logo-text-sub">Election Commission of India</span>
+            </div>
+        </header>
+
+        <main class="lang-main-content">
+            <h1>Select your Preferred Language to Enter the Website</h1>
+            <p class="hindi-prompt">वेबसाइट में प्रवेश करने के लिए अपनी पसंदीदा भाषा का चयन करें</p>
+
+            <div class="language-buttons">
+                <button class="lang-button" data-lang="en">English</button>
+                <button class="lang-button" data-lang="hi">हिन्दी</button>
+                <button class="lang-button" data-lang="mr">मराठी</button>
+                <button class="lang-button" data-lang="bn">বাংলা</button>
+                <button class="lang-button" data-lang="ta">தமிழ்</button>
+                <button class="lang-button" data-lang="te">తెలుగు</button>
+                <button class="lang-button" data-lang="gu">ગુજરાતી</button>
+                <button class="lang-button" data-lang="kn">ಕನ್ನಡ</button>
+                <button class="lang-button" data-lang="ml">മലയാളം</button>
+                <button class="lang-button" data-lang="pa">ਪੰਜਾਬੀ</button>
+                <button class="lang-button" data-lang="or">ଓଡ଼ିଆ</button>
+                <button class="lang-button" data-lang="ur">اردو</button>
+            </div>
+        </main>
+
+        <footer class="lang-footer">
+            <p>&copy; <span id="currentYear"></span> Online Voting Portal. All rights reserved.</p>
+        </footer>
+    </div>
+    <script>
+        // Script to set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Basic script to show which language is clicked (actual navigation will be added later)
+        const langButtons = document.querySelectorAll('.lang-button');
+        langButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const selectedLang = this.getAttribute('data-lang');
+                window.location.href = 'login.html';
+            });
+            
+        });
+    </script>
+</body>
+</html>
